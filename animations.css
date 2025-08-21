@@ -1,0 +1,30 @@
+[data-animate] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: transform .7s cubic-bezier(.21,1,.21,1), opacity .7s ease;
+  will-change: transform, opacity;
+}
+[data-animate].in { opacity: 1; transform: none; }
+
+/* Variants */
+[data-animate="slide-up"] { transform: translateY(22px); }
+[data-animate="slide-left"] { transform: translateX(-26px); }
+[data-animate="slide-right"] { transform: translateX(26px); }
+[data-animate="fade-in"] { transform: none; }
+[data-animate="pop"] { transform: scale(.96); }
+[data-animate="rotate-in"] { transform: rotate(-2deg) scale(.98); transform-origin: center; }
+
+/* Ken Burns utility */
+.kenburns { animation: kenburns 22s ease-in-out infinite alternate; transform-origin: center; }
+@keyframes kenburns { 0% { transform: scale(1.04); } 100% { transform: scale(1.08); } }
+
+/* Parallax utility (apply with JS via --py) */
+[data-parallax-y] { will-change: transform; }
+.use-parallax { transform: translateY(var(--py, 0)); }
+
+/* Button ripple */
+.btn { position: relative; overflow: hidden; }
+.ripple { position: absolute; border-radius: 999px; transform: scale(0); animation: ripple .6s ease-out; background: rgba(0,0,0,.15); pointer-events: none; }
+@keyframes ripple { to { transform: scale(18); opacity: 0; } }
+
+
