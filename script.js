@@ -48,14 +48,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 const y = document.getElementById('year');
 if (y) y.textContent = new Date().getFullYear();
 
-// Auto-detect if iframe has a real src (not placeholder) and reveal
-// (Removed iframe usage)
 
-
-// Option B: Google Forms relay (HTML inputs -> Google Forms -> linked Sheet)
-// 1) Open your Google Form → three dots → Get pre-filled link OR inspect preview to find entry IDs
-// 2) Set formAction to https://docs.google.com/forms/d/e/FORM_ID/formResponse
-// 3) Map each local field to its entry.<ID>
 const GOOGLE_FORMS = {
   enabled: true, // set to true after you fill formAction and entryMap
   formAction: 'https://docs.google.com/forms/d/e/1FAIpQLScohT3CCsiwNlyBknt30aHCC_DLweZ-q0UyiF6Eo6AXCV1rrg/formResponse',
