@@ -1391,7 +1391,7 @@ html.dark #category {
   color: rgb(190, 175, 123);
 }
 
-html.dark #category option{
+html.dark #category option {
   color: #000000;
 }
 
@@ -1442,5 +1442,10 @@ html.dark #story {
 
   .stories.loop .container {
     overflow: visible !important;
+  }
+
+  .stories.loop .cards.marquee-running {
+    animation-duration: 30s;
+    /* chạy chậm hơn cho mobile */
   }
 }
