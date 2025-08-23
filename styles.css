@@ -1435,29 +1435,43 @@ html.dark #story {
     top: 40px;
   }
 
- .stories.loop .container {
-    overflow: hidden !important; /* giữ card trong khung, không kéo ngang */
+  #storiesList,
+  #storiesList .card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Marquee cho mobile */
+  .stories.loop .container {
+    overflow: hidden !important;
   }
 
   .stories.loop .cards {
     display: flex !important;
-    width: max-content; /* dài đúng bằng tổng card */
-    white-space: normal !important; /* bỏ nowrap để flex tính đúng */
+    flex-wrap: nowrap;
     gap: 16px;
     margin-top: 14px;
     will-change: transform;
   }
 
   .stories.loop .card {
-    flex: 0 0 auto; /* card giữ nguyên kích thước */
+    flex: 0 0 80vw;
+    /* điều chỉnh chiều rộng card trên mobile */
   }
 
   .stories.loop .cards.marquee-running {
-    animation: marqueeScrollMobile 40s linear infinite;
+    animation: marqueeScrollMobile 35s linear infinite;
   }
 
   @keyframes marqueeScrollMobile {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-100%); }
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+
+    /* chạy nửa track để luôn còn nội dung */
   }
 }
