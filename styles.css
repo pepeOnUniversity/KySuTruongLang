@@ -1413,65 +1413,6 @@ html.dark #story {
   background-color: white;
 }
 
-@media screen and (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    align-items: center;
-    margin: 60px auto;
-  }
 
-  .b2 {
-    margin-left: 15px;
-  }
 
-  .b1 {
-    margin-right: 20px;
-  }
 
-  .c3 {
-    position: relative;
-    width: auto;
-    height: 250px;
-    top: 40px;
-  }
-
-  #storiesList,
-  #storiesList .card {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  /* Marquee cho mobile */
-  .stories.loop .container {
-    overflow: hidden !important;
-  }
-
-  .stories.loop .cards {
-    display: flex !important;
-    flex-wrap: nowrap;
-    gap: 16px;
-    margin-top: 14px;
-    will-change: transform;
-  }
-
-  .stories.loop .card {
-    flex: 0 0 80vw;
-    /* điều chỉnh chiều rộng card trên mobile */
-  }
-
-  .stories.loop .cards.marquee-running {
-    animation: marqueeScrollMobile 35s linear infinite;
-  }
-
-  @keyframes marqueeScrollMobile {
-    from {
-      transform: translateX(0);
-    }
-
-    to {
-      transform: translateX(-50%);
-    }
-
-    /* chạy nửa track để luôn còn nội dung */
-  }
-}
