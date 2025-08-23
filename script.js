@@ -280,6 +280,7 @@ if (storiesList) {
     const time = card.querySelector('.meta span:nth-child(2)')?.textContent?.trim() || '';
     openModal({ title, content, category, author, time });
   });
+  
 }
 
 // Reveal on scroll animations
@@ -345,7 +346,7 @@ if (introStack) {
 
 const select = document.getElementById("category");
 
-select.addEventListener("change", function() {
+select.addEventListener("change", function () {
   if (this.value === "") {
     this.style.color = "rgb(190, 175, 123)"; // màu placeholder
   } else {
