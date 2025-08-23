@@ -1435,36 +1435,29 @@ html.dark #story {
     top: 40px;
   }
 
-  /* Container giữ khung, ẩn phần bị tràn */
-  .stories.loop .container {
-    overflow: hidden !important;
-    /* khôi phục để không kéo ngang web */
+ .stories.loop .container {
+    overflow: hidden !important; /* giữ card trong khung, không kéo ngang */
   }
 
-  /* Cards list chạy ngang vô hạn */
   .stories.loop .cards {
     display: flex !important;
+    width: max-content; /* dài đúng bằng tổng card */
+    white-space: normal !important; /* bỏ nowrap để flex tính đúng */
     gap: 16px;
     margin-top: 14px;
-    width: max-content;
-    /* dài bằng tổng card */
     will-change: transform;
+  }
+
+  .stories.loop .card {
+    flex: 0 0 auto; /* card giữ nguyên kích thước */
   }
 
   .stories.loop .cards.marquee-running {
     animation: marqueeScrollMobile 40s linear infinite;
   }
 
-  /* Animation cuộn toàn bộ chiều rộng */
   @keyframes marqueeScrollMobile {
-    from {
-      transform: translateX(0);
-    }
-
-    to {
-      transform: translateX(-100%);
-    }
+    from { transform: translateX(0); }
+    to   { transform: translateX(-100%); }
   }
-
-
 }
