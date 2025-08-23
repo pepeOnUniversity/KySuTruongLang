@@ -1439,4 +1439,8 @@ html.dark #story {
     animation: none !important;
     transform: translateX(0) !important;
   }
+
+  .stories.loop .container {
+    overflow: visible !important;
+  }
 }
