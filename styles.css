@@ -1434,4 +1434,9 @@ html.dark #story {
     height: 250px;
     top: 40px;
   }
+
+  .stories.loop .cards.marquee-running {
+    animation: none !important;
+    transform: translateX(0) !important;
+  }
 }
