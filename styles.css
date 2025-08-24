@@ -1443,15 +1443,6 @@ html.dark #story {
 
 }
 
-/* Desktop mặc định */
-.desktop-only {
-  display: block;
-}
-
-.mobile-only {
-  display: none;
-}
-
 /* Mobile */
 @media (max-width: 768px) {
   html, body{
