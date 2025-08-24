@@ -800,6 +800,7 @@ body {
   word-wrap: break-word;
   overflow: hidden;
   display: -webkit-box;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
 }
 
@@ -1391,7 +1392,7 @@ html.dark #category {
   color: rgb(190, 175, 123);
 }
 
-html.dark #category option {
+html.dark #category option{
   color: #000000;
 }
 
@@ -1413,6 +1414,25 @@ html.dark #story {
   background-color: white;
 }
 
+@media screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    margin: 60px auto;
+  }
 
+  .b2 {
+    margin-left: 15px;
+  }
 
+  .b1 {
+    margin-right: 20px;
+  }
 
+  .c3 {
+    position: relative;
+    width: auto;
+    height: 250px;
+    top: 40px;
+  }
+}
