@@ -1445,7 +1445,9 @@ html.dark #story {
 
 /* Mobile */
 @media (max-width: 768px) {
-  html, body{
+
+  html,
+  body {
     overflow-x: hidden;
   }
 
@@ -1455,6 +1457,15 @@ html.dark #story {
 
   .mobile-only {
     display: block;
+  }
+
+  .cards.desktop-only.marquee-running {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
   }
 
   .mobile-only h3 {
