@@ -1502,4 +1502,33 @@ html.dark #story {
     color: var(--accent);
   }
 
+  #cau-chuyen {
+    padding-top: 20px;
+    padding-bottom: 0px;
+  }
+
+  .c3 {
+    width: 60%;
+    height: auto;
+    position: relative;
+    top: 150px;
+    left: 150px;
+  }
+
+  .li-stories-mobile {
+    margin-bottom: 15px;
+    border: solid 1px rgb(178, 131, 131);
+    border-top-left-radius: 20px;
+    /* góc trên bên trái */
+    border-top-right-radius: 20px;
+    /* góc trên bên phải */
+  }
+
+  .li-title-stories-mobile {
+    padding-left: 20px;
+  }
+
+  .sp-li-stories {
+    padding-left: 20px;
+  }
 }
