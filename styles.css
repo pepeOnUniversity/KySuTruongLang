@@ -818,7 +818,8 @@ body {
   padding: 4px 8px;
   border-radius: 999px;
 
-  white-space: nowrap;   /* không xuống dòng */
+  white-space: nowrap;
+  /* không xuống dòng */
 }
 
 
@@ -1395,7 +1396,7 @@ html.dark #category {
   color: rgb(190, 175, 123);
 }
 
-html.dark #category option{
+html.dark #category option {
   color: #000000;
 }
 
@@ -1437,5 +1438,27 @@ html.dark #story {
     width: auto;
     height: 250px;
     top: 40px;
+  }
+
+
+}
+
+/* Desktop mặc định */
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
   }
 }
