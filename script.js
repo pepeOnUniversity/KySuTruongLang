@@ -48,7 +48,14 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 const y = document.getElementById('year');
 if (y) y.textContent = new Date().getFullYear();
 
+// Auto-detect if iframe has a real src (not placeholder) and reveal
+// (Removed iframe usage)
 
+
+// Option B: Google Forms relay (HTML inputs -> Google Forms -> linked Sheet)
+// 1) Open your Google Form → three dots → Get pre-filled link OR inspect preview to find entry IDs
+// 2) Set formAction to https://docs.google.com/forms/d/e/FORM_ID/formResponse
+// 3) Map each local field to its entry.<ID>
 const GOOGLE_FORMS = {
   enabled: true, // set to true after you fill formAction and entryMap
   formAction: 'https://docs.google.com/forms/d/e/1FAIpQLScohT3CCsiwNlyBknt30aHCC_DLweZ-q0UyiF6Eo6AXCV1rrg/formResponse',
@@ -280,7 +287,6 @@ if (storiesList) {
     const time = card.querySelector('.meta span:nth-child(2)')?.textContent?.trim() || '';
     openModal({ title, content, category, author, time });
   });
-  
 }
 
 // Reveal on scroll animations
@@ -346,14 +352,12 @@ if (introStack) {
 
 const select = document.getElementById("category");
 
-select.addEventListener("change", function () {
+select.addEventListener("change", function() {
   if (this.value === "") {
     this.style.color = "rgb(190, 175, 123)"; // màu placeholder
   } else {
     this.style.color = "#000"; // màu option khác
   }
 });
-
-
 
 

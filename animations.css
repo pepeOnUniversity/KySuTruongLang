@@ -26,5 +26,3 @@
 .btn { position: relative; overflow: hidden; }
 .ripple { position: absolute; border-radius: 999px; transform: scale(0); animation: ripple .6s ease-out; background: rgba(0,0,0,.15); pointer-events: none; }
 @keyframes ripple { to { transform: scale(18); opacity: 0; } }
-
-
