@@ -1,4 +1,10 @@
 // Reveal elements with data-animate
+
+function isMobile() {
+  return window.innerWidth <= 768; // bạn có thể chỉnh lại breakpoint theo ý muốn
+}
+
+
 (function() {
   const els = document.querySelectorAll('[data-animate]');
   if (!els.length) return;
@@ -26,6 +32,25 @@
       el.classList.add('use-parallax');
     });
   };
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+})();
+
+(function() {
+  if (!isMobile()) return; // chỉ chạy trên mobile
+
+  const els = document.querySelectorAll('[data-parallax-y]');
+  if (!els.length) return;
+
+  const update = () => {
+    const y = window.scrollY;
+    els.forEach(el => {
+      const speed = Number(el.getAttribute('data-parallax-y')) || 12;
+      el.style.setProperty('--py', `${y / speed}px`);
+      el.classList.add('use-parallax');
+    });
+  };
+
   update();
   window.addEventListener('scroll', update, { passive: true });
 })();
