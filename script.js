@@ -192,7 +192,7 @@ if (storiesList) {
     },
     {
       title: 'Thầy Hiệu trưởng và cô thư kí',
-      content: 'Tôi đã chứng kiến cảnh này nhiều lần, tôi đã không tin đấy là sự thật cho đến một ngày tôi thấy họ đang tay trong tay bước ra từ nhà nghỉ.',
+      content: 'Tôi đã chứng kiến cảnh này nhiều lần, tôi đã không tin đấy là sự thật cho đến một ngày tôi thấy họ đang tay trong tay bước ra từ nhà nghỉ. Tôi định giữ kín chuyện này cho riêng mình, nhưng tôi nhận ra việc 1 người điều hành cả 1 hệ thống giáo dục mà lại có những hành động như thế thì thật không đáng.',
       author: 'N.T.',
       category: 'Khó nói',
       time: '1 tuần trước'
