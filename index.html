@@ -139,15 +139,18 @@
         <h3>📖 Chuyện mới chia sẻ</h3>
         <p>Những dòng tâm sự được nhiều bạn quan tâm gần đây:</p>
         <ul class="mobile-stories">
-          <li class="li-stories-mobile">
+          <li class="li-stories-mobile"
+            data-content="Một câu chuyện nhỏ đầy cảm xúc về những ngày cuối thu, khi bụi phấn trắng hòa quyện trong ánh nắng vàng, để lại bao ký ức khó quên.">
             <strong class="li-title-stories-mobile">Mùi phấn bảng cuối thu</strong><br>
             <span class="muted sp-li-stories">Một bạn ẩn danh · 2 ngày trước</span>
           </li>
-          <li class="li-stories-mobile">
+          <li class="li-stories-mobile"
+            data-content="Một câu chuyện thú vị về tình thầy trò, nơi thầy Hiệu trưởng và cô thư ký cùng nhau tạo nên những kỷ niệm đáng nhớ.">
             <strong class="li-title-stories-mobile">Thầy Hiệu trưởng và cô thư kí</strong><br>
             <span class="muted sp-li-stories">N.T. · 1 tuần trước</span>
           </li>
-          <li class="li-stories-mobile">
+          <li class="li-stories-mobile"
+            data-content="Tiếng trống tan trường vang lên, gợi lại bao kỷ niệm tuổi học trò hồn nhiên, vô tư và đầy ắp tiếng cười.">
             <strong class="li-title-stories-mobile">Tiếng trống tan trường</strong><br>
             <span class="muted sp-li-stories">P.L. · 3 tuần trước</span>
           </li>
@@ -155,7 +158,18 @@
         <p class="more">👉 Chạm vào để đọc thêm câu chuyện của cộng đồng!</p>
       </div>
 
+      <!-- Modal hiển thị nội dung -->
+      <div id="storyModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div id="storyText"></div>
+        </div>
+      </div>
+
+
+
     </div>
+
   </section>
 
 
@@ -240,6 +254,13 @@
         <h3 class="modal-title" id="storyModalTitle"></h3>
       </div>
       <div class="modal-body" id="storyModalContent"></div>
+    </div>
+  </div>
+  <!-- Modal hiển thị nội dung -->
+  <div id="storyModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="storyText"></div>
     </div>
   </div>
 
