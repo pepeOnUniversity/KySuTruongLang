@@ -817,7 +817,10 @@ body {
   border: 1px solid rgba(33, 158, 188, .18);
   padding: 4px 8px;
   border-radius: 999px;
+
+  white-space: nowrap;   /* không xuống dòng */
 }
+
 
 /* Infinite marquee loop for stories */
 .stories.loop .container {
