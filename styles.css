@@ -1423,6 +1423,11 @@ html.dark #story {
   background-color: white;
 }
 
+.btn-hero {
+  margin-top: 30px;
+}
+
+
 @media screen and (max-width: 768px) {
   .header {
     flex-direction: column;
