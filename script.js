@@ -360,5 +360,55 @@ select.addEventListener("change", function () {
   }
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+  const storyItems = document.querySelectorAll('.li-stories-mobile');
+  const popupOverlay = document.getElementById('popupOverlay');
+  const popupTitle = document.getElementById('popupTitle');
+  const popupMeta = document.getElementById('popupMeta');
+  const popupContent = document.getElementById('popupContent');
+  const closeBtn = document.getElementById('closeBtn');
 
+  // Thêm event listener cho mỗi story item
+  storyItems.forEach(function (item) {
+    item.addEventListener('click', function () {
+      // Lấy thông tin từ thẻ li được click
+      const title = this.querySelector('.li-title-stories-mobile').textContent;
+      const meta = this.querySelector('.sp-li-stories').textContent;
+      const content = this.getAttribute('data-content');
+
+      // Cập nhật nội dung popup
+      popupTitle.textContent = title;
+      popupMeta.textContent = meta;
+      popupContent.textContent = content;
+
+      // Hiển thị popup
+      popupOverlay.style.display = 'block';
+      document.body.style.overflow = 'hidden'; // Ngăn scroll trang chính
+    });
+  });
+
+  // Đóng popup khi click nút close
+  closeBtn.addEventListener('click', function () {
+    closePopup();
+  });
+
+  // Đóng popup khi click vào overlay (nền đen)
+  popupOverlay.addEventListener('click', function (e) {
+    if (e.target === popupOverlay) {
+      closePopup();
+    }
+  });
+
+  // Đóng popup khi nhấn phím ESC
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && popupOverlay.style.display === 'block') {
+      closePopup();
+    }
+  });
+
+  function closePopup() {
+    popupOverlay.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Cho phép scroll trang chính trở lại
+  }
+});
 
