@@ -1467,6 +1467,7 @@ html.dark #story {
   display: block;
 }
 
+
 /* Mobile */
 @media screen and (max-width: 768px) {
 
@@ -1701,7 +1702,7 @@ html.dark #story {
     }
   }
 
-  .title.in{
+  .title.in {
     padding-top: 20px;
     border-top: solid 2px black;
     text-align: center;
@@ -1724,7 +1725,7 @@ html.dark #story {
     text-align: center;
   }
 
-  html.dark .li-stories-mobile{
+  html.dark .li-stories-mobile {
     background-color: #ddcfcf;
   }
 
@@ -1732,7 +1733,7 @@ html.dark #story {
     margin: 0px;
   }
 
-  .cover-more .more{
+  .cover-more .more {
     display: flex;
     font-size: 11px;
     text-align: center;

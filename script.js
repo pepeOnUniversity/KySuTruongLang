@@ -412,3 +412,212 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+
+const emailInput = document.getElementById('email');
+
+emailInput.addEventListener('blur', validateEmail);
+emailInput.addEventListener('input', validateEmail);
+
+function validateEmail() {
+  const email = emailInput.value.trim();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Xóa thông báo lỗi cũ
+  removeErrorMessage();
+
+  if (email === '') {
+    showError('Email không được để trống');
+    return false;
+  }
+
+  if (!emailRegex.test(email)) {
+    showError('Vui lòng nhập đúng định dạng email');
+    return false;
+  }
+
+  return true;
+}
+
+function showError(message) {
+  const errorDiv = document.createElement('div');
+  errorDiv.className = 'error-message';
+  errorDiv.style.color = 'red';
+  errorDiv.style.fontSize = '14px';
+  errorDiv.textContent = message;
+
+  emailInput.parentNode.insertBefore(errorDiv, emailInput.nextSibling);
+}
+
+function removeErrorMessage() {
+  const errorMsg = document.querySelector('.error-message');
+  if (errorMsg) {
+    errorMsg.remove();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const categorySelect = document.getElementById('category');
+
+  // Validation khi thay đổi lựa chọn
+  categorySelect.addEventListener('change', function () {
+    validateCategory();
+  });
+
+  // Validation khi submit form
+  const form = categorySelect.closest('form');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      if (!validateCategory()) {
+        e.preventDefault();
+        categorySelect.focus();
+      }
+    });
+  }
+
+  function validateCategory() {
+    const selectedValue = categorySelect.value;
+
+    // Xóa thông báo lỗi cũ
+    removeErrorMessage();
+
+    if (selectedValue === '' || selectedValue === 'default') {
+      showError('Vui lòng chọn chủ đề');
+      return false;
+    }
+
+    return true;
+  }
+
+  function showError(message) {
+    // Kiểm tra xem đã có thông báo lỗi chưa
+    if (document.querySelector('.category-error')) return;
+
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'category-error';
+    // errorDiv.style.cssText = 'color: #e74c3c; font-size: 14px; margin-top: 5px;';
+    errorDiv.textContent = message;
+
+    categorySelect.parentNode.appendChild(errorDiv);
+  }
+
+  function removeErrorMessage() {
+    const errorMsg = document.querySelector('.category-error');
+    if (errorMsg) {
+      errorMsg.remove();
+    }
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const emailInput = document.getElementById('email');
+  const submitBtn = document.getElementById('submitBtn');
+  const formStatus = document.getElementById('formStatus');
+  const form = submitBtn.closest('form');
+
+  // Reset trạng thái ban đầu
+  emailInput.style.border = '';
+  emailInput.classList.remove('input-error', 'input-success');
+
+  // Disable button ban đầu chỉ khi email rỗng
+  checkEmailAndEnableButton();
+
+  emailInput.addEventListener('input', function () {
+    checkEmailAndEnableButton();
+  });
+
+  emailInput.addEventListener('blur', function () {
+    // Chỉ validate khi blur và có giá trị
+    if (emailInput.value.trim() !== '') {
+      validateEmailAndShowBorder();
+    }
+  });
+
+  emailInput.addEventListener('focus', function () {
+    // Reset border khi focus (nếu muốn)
+    emailInput.classList.remove('input-error');
+    formStatus.textContent = '';
+  });
+
+  function checkEmailAndEnableButton() {
+    const email = emailInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (email !== '' && emailRegex.test(email)) {
+      // Email hợp lệ
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '1';
+      submitBtn.style.cursor = 'pointer';
+      formStatus.textContent = '';
+    } else {
+      // Email không hợp lệ hoặc rỗng
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.6';
+      submitBtn.style.cursor = 'not-allowed';
+    }
+  }
+
+  function validateEmailAndShowBorder() {
+    const email = emailInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Reset classes
+    emailInput.classList.remove('input-error', 'input-success');
+
+    if (email === '') {
+      // Không hiện gì khi rỗng
+      formStatus.textContent = '';
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      // Email sai định dạng - hiện border đỏ
+      emailInput.classList.add('input-error');
+      formStatus.textContent = 'Email không đúng định dạng';
+      formStatus.style.color = '#e74c3c';
+    } else {
+      // Email hợp lệ - hiện border xanh
+      emailInput.classList.add('input-success');
+      formStatus.textContent = '';
+    }
+  }
+
+  // Validation khi submit
+  form.addEventListener('submit', function (e) {
+    const email = emailInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (email === '') {
+      e.preventDefault();
+      emailInput.classList.add('input-error');
+      formStatus.textContent = 'Vui lòng nhập email';
+      formStatus.style.color = '#e74c3c';
+      emailInput.focus();
+      return false;
+    }
+
+    if (!emailRegex.test(email)) {
+      e.preventDefault();
+      emailInput.classList.add('input-error');
+      formStatus.textContent = 'Email không đúng định dạng';
+      formStatus.style.color = '#e74c3c';
+      emailInput.focus();
+      return false;
+    }
+
+    // Hiển thị trạng thái đang gửi
+    formStatus.textContent = 'Đang gửi...';
+    formStatus.style.color = '#3498db';
+    submitBtn.disabled = true;
+
+    const submitBtn = document.getElementById("submitBtn");
+    const formStatus = document.getElementById("formStatus");
+
+    submitBtn.addEventListener("click", function (e) {
+      e.preventDefault(); // Ngăn form reload lại trang
+      formStatus.textContent = "Đã gửi thành công ✅";
+      formStatus.style.color = "green";
+    });
+  });
+});
+
+
