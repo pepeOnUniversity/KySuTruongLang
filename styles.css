@@ -1268,6 +1268,7 @@ html.dark .mock-meta {
 html.dark #submitBtn {
   background-color: rgb(211, 54, 54);
 }
+
 .footer-inner {
   display: grid;
   grid-template-columns: 1.6fr .8fr .8fr;
@@ -1447,13 +1448,20 @@ html.dark #story {
 
 }
 
-/* Ẩn mobile trên desktop */
-#storiesListMobile.mobile-only {
-  display: none !important;
+
+
+/* Mặc định: ẩn mobile */
+.mobile-only {
+  display: none;
+}
+
+/* Mặc định: hiện desktop */
+.desktop-only {
+  display: block;
 }
 
 /* Mobile */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
 
   html,
   body {
