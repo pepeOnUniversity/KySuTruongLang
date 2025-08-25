@@ -1453,7 +1453,9 @@ html.dark #story {
 
 }
 
-
+#popupOverlay {
+  display: none;
+}
 
 /* Mặc định: ẩn mobile */
 .mobile-only {
