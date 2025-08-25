@@ -1554,5 +1554,11 @@ html.dark #story {
     padding-left: 20px;
   }
 
+  .cover-more {
+    text-decoration: none;
+  }
 
+  .more {
+    font-size: 12px;
+  }
 }
