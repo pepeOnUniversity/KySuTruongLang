@@ -134,36 +134,42 @@
       <!-- Desktop version -->
       <div id="storiesList" class="cards desktop-only" data-animate="slide-up" data-delay="120"></div>
 
-      <!-- Mobile version -->
       <div id="storiesListMobile" class="mobile-only">
         <h3>📖 Chuyện mới chia sẻ</h3>
         <p>Những dòng tâm sự được nhiều bạn quan tâm gần đây:</p>
         <ul class="mobile-stories">
           <li class="li-stories-mobile"
-            data-content="Một câu chuyện nhỏ đầy cảm xúc về những ngày cuối thu, khi bụi phấn trắng hòa quyện trong ánh nắng vàng, để lại bao ký ức khó quên.">
-            <strong class="li-title-stories-mobile">Mùi phấn bảng cuối thu</strong><br>
+            data-content="Một câu chuyện nhỏ đầy cảm xúc về những ngày cuối thu, khi bụi phấn trắng hòa quyện trong ánh nắng vàng, để lại bao ký ức khó quên. Những chiếc lá vàng rơi rụng từng chiếc một, giống như những kỷ niệm tuổi học trò đang dần xa khuất. Mùi phấn bảng pha lẫn hương lá khô tạo nên một không khí đặc biệt, chỉ có thể cảm nhận được trong những ngày tháng đẹp nhất của đời người.">
+            <strong class="li-title-stories-mobile">Mùi phấn bảng cuối thu</strong>
             <span class="muted sp-li-stories">Một bạn ẩn danh · 2 ngày trước</span>
           </li>
           <li class="li-stories-mobile"
-            data-content="Một câu chuyện thú vị về tình thầy trò, nơi thầy Hiệu trưởng và cô thư ký cùng nhau tạo nên những kỷ niệm đáng nhớ.">
-            <strong class="li-title-stories-mobile">Thầy Hiệu trưởng và cô thư kí</strong><br>
+            data-content="Một câu chuyện thú vị về tình thầy trò, nơi thầy Hiệu trưởng và cô thư ký cùng nhau tạo nên những kỷ niệm đáng nhớ. Từ những buổi họp phụ huynh căng thẳng đến những khoảnh khắc chia sẻ trong văn phòng nhỏ, hai người đã cùng nhau vượt qua bao khó khăn để xây dựng nên một ngôi trường thân thiện và ấm áp.">
+            <strong class="li-title-stories-mobile">Thầy Hiệu trưởng và cô thư kí</strong>
             <span class="muted sp-li-stories">N.T. · 1 tuần trước</span>
           </li>
           <li class="li-stories-mobile"
-            data-content="Tiếng trống tan trường vang lên, gợi lại bao kỷ niệm tuổi học trò hồn nhiên, vô tư và đầy ắp tiếng cười.">
-            <strong class="li-title-stories-mobile">Tiếng trống tan trường</strong><br>
+            data-content="Tiếng trống tan trường vang lên, gợi lại bao kỷ niệm tuổi học trò hồn nhiên, vô tư và đầy ắp tiếng cười. Mỗi tiếng trống là một lời chào tạm biệt với một ngày học đầy bổ ích, là tín hiệu của sự tự do và niềm vui sắp tới. Những đứa trẻ ào ạt chạy ra cổng trường, tiếng cười nói rộn ràng hòa cùng tiếng chim chíp líu líu trên cành.">
+            <strong class="li-title-stories-mobile">Tiếng trống tan trường</strong>
             <span class="muted sp-li-stories">P.L. · 3 tuần trước</span>
           </li>
         </ul>
         <a href="https://www.facebook.com/kysutruonglang?locale=vi_VN" target="_blank" class="cover-more">
           <p class="more">👉 Chạm vào để đọc thêm câu chuyện của cộng đồng!</p>
         </a>
-
       </div>
 
-
-
-
+      <!-- Popup overlay -->
+      <div id="popupOverlay" class="popup-overlay">
+        <div class="popup-content">
+          <div class="popup-header">
+            <h2 id="popupTitle" class="popup-title"></h2>
+            <button class="close-btn" id="closeBtn">&times;</button>
+          </div>
+          <div id="popupMeta" class="popup-meta"></div>
+          <div id="popupContent" class="popup-story-content"></div>
+        </div>
+      </div>
     </div>
 
   </section>
