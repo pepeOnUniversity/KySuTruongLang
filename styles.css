@@ -1727,4 +1727,14 @@ html.dark #story {
   html.dark .li-stories-mobile{
     background-color: #ddcfcf;
   }
+
+  .popup-content {
+    margin: 0px;
+  }
+
+  .cover-more .more{
+    display: flex;
+    font-size: 11px;
+    text-align: justify;
+  }
 }
