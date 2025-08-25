@@ -189,14 +189,14 @@
             <input id="name" name="name" type="text" placeholder="Bạn có thể để trống hoặc dùng bí danh" />
           </div>
           <div class="form-row">
-            <label for="email">Email (tuỳ chọn)</label>
-            <input id="email" name="email" type="email" inputmode="email"
-              placeholder="Dùng để liên hệ khi cần (không bắt buộc)" />
+            <label for="email">Email <span class="req">*</span></label>
+            <input id="email" name="email" type="email" inputmode="email" placeholder="Email của bạn" required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
           </div>
           <div class="form-row">
-            <label for="category">Chủ đề</label>
-            <select id="category" name="category">
-              <option value="default" selected>Chọn chủ đề</option>
+            <label for="category">Chủ đề <span class="req">*</span></label>
+            <select id="category" name="category" required>
+              <option value="" disabled selected>Chọn chủ đề</option>
               <option value="Chuyện cá nhân">Chuyện cá nhân</option>
               <option value="Chuyện trường lớp">Chuyện trường lớp</option>
               <option value="Drama">Drama</option>
