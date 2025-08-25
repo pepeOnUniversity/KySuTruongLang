@@ -360,28 +360,5 @@ select.addEventListener("change", function () {
   }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const modal = document.getElementById("storyModal");
-  const storyText = document.getElementById("storyText");
-  const closeBtn = document.querySelector(".close");
 
-  document.querySelectorAll(".li-stories-mobile").forEach(item => {
-    item.addEventListener("click", function () {
-      const content = this.getAttribute("data-content");
-      storyText.textContent = content; // gắn nội dung
-      modal.style.display = "block";   // hiển thị modal
-    });
-  });
-
-  closeBtn.addEventListener("click", function () {
-    modal.style.display = "none";
-  });
-
-  window.addEventListener("click", function (e) {
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
-  });
-
-});
 
