@@ -800,6 +800,7 @@ body {
   word-wrap: break-word;
   overflow: hidden;
   display: -webkit-box;
+  line-clamp: 6;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
 }
@@ -1264,6 +1265,9 @@ html.dark .mock-meta {
   color: rebeccapurple;
 }
 
+html.dark #submitBtn {
+  background-color: rgb(211, 54, 54);
+}
 .footer-inner {
   display: grid;
   grid-template-columns: 1.6fr .8fr .8fr;
