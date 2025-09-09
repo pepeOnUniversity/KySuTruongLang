@@ -66,8 +66,35 @@ const GOOGLE_FORMS = {
     category: 'entry.2145299222',
     title: 'entry.481703640',
     story: 'entry.2084074414',
+    image: 'entry.1548879037'
   }
 };
+
+// Cloudinary unsigned upload config (replace with your values)
+const CLOUDINARY = {
+  enabled: true,
+  cloudName: 'dtbzcpwei', // e.g. 'demo'
+  uploadPreset: 'kstl_unsigned', // create unsigned preset in Cloudinary
+  folder: 'kstl_uploads'
+};
+
+async function uploadImageToCloudinary(file) {
+  if (!CLOUDINARY.enabled) return '';
+  if (!CLOUDINARY.cloudName || !CLOUDINARY.uploadPreset || CLOUDINARY.cloudName.includes('REPLACE_WITH')) {
+    throw new Error('Cloudinary chưa được cấu hình (cloudName/uploadPreset).');
+  }
+
+  const url = `https://api.cloudinary.com/v1_1/${encodeURIComponent(CLOUDINARY.cloudName)}/image/upload`;
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('upload_preset', CLOUDINARY.uploadPreset);
+  if (CLOUDINARY.folder) formData.append('folder', CLOUDINARY.folder);
+
+  const res = await fetch(url, { method: 'POST', body: formData });
+  if (!res.ok) throw new Error('Không thể upload ảnh lên Cloudinary.');
+  const data = await res.json();
+  return data.secure_url || data.url || '';
+}
 
 // Submit native form to backend
 const form = document.getElementById('storyForm');
@@ -96,10 +123,17 @@ async function handleSubmit(event) {
     category: form.category?.value || 'Khác',
     title: form.title?.value?.trim() || '',
     story,
+    image: '',
     consent: Boolean(form.consent?.checked)
   };
 
   try {
+    const imageFile = form.image?.files?.[0];
+    if (imageFile) {
+      statusEl.textContent = 'Đang tải ảnh...';
+      const imageUrl = await uploadImageToCloudinary(imageFile);
+      payload.image = imageUrl;
+    }
     if (GOOGLE_FORMS.enabled) {
       await submitToGoogleForms(payload);
     } else {
@@ -164,6 +198,7 @@ async function submitToGoogleForms(payload) {
     [map.category]: payload.category,
     [map.title]: payload.title,
     [map.story]: payload.story,
+    [map.image]: payload.image,
     [map.consent]: payload.consent ? 'yes' : 'no'
   }).forEach(([name, value]) => {
     if (!name || typeof value === 'undefined') return;
@@ -586,24 +621,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const email = emailInput.value.trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (email === '') {
-      e.preventDefault();
-      emailInput.classList.add('input-error');
-      formStatus.textContent = 'Vui lòng nhập email';
-      formStatus.style.color = '#e74c3c';
-      emailInput.focus();
-      return false;
-    }
-
-    if (!emailRegex.test(email)) {
-      e.preventDefault();
-      emailInput.classList.add('input-error');
-      formStatus.textContent = 'Email không đúng định dạng';
-      formStatus.style.color = '#e74c3c';
-      emailInput.focus();
-      return false;
-    }
-
     // Hiển thị trạng thái đang gửi
     formStatus.textContent = 'Đang gửi...';
     formStatus.style.color = '#3498db';
@@ -619,5 +636,98 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+const fileInput = document.getElementById('image');
+const fileInputCustom = document.getElementById('fileInputCustom');
+const fileInfo = document.getElementById('fileInfo');
+const fileName = document.getElementById('fileName');
+const fileSize = document.getElementById('fileSize');
+
+// Handle file selection
+fileInput.addEventListener('change', handleFileSelect);
+
+// Handle drag and drop
+fileInputCustom.addEventListener('dragover', handleDragOver);
+fileInputCustom.addEventListener('dragleave', handleDragLeave);
+fileInputCustom.addEventListener('drop', handleDrop);
+
+function handleFileSelect(e) {
+  const file = e.target.files[0];
+  if (file) {
+    displayFileInfo(file);
+  }
+}
+
+function handleDragOver(e) {
+  e.preventDefault();
+  fileInputCustom.classList.add('file-dragover');
+}
+
+function handleDragLeave(e) {
+  e.preventDefault();
+  fileInputCustom.classList.remove('file-dragover');
+}
+
+function handleDrop(e) {
+  e.preventDefault();
+  fileInputCustom.classList.remove('file-dragover');
+
+  const files = e.dataTransfer.files;
+  if (files.length > 0) {
+    fileInput.files = files;
+    displayFileInfo(files[0]);
+  }
+}
+
+function displayFileInfo(file) {
+  // Show selected state
+  fileInputCustom.classList.add('file-selected');
+
+  // Update content
+  const content = fileInputCustom.querySelector('.file-input-content');
+  content.innerHTML = `
+                <span class="file-icon">✅</span>
+                <div class="file-text">Đã chọn: ${file.name}</div>
+                <div class="file-hint">Click để chọn file khác</div>
+                <div class="file-types">Kích thước: ${formatFileSize(file.size)}</div>
+            `;
+
+  // Show file info
+  fileName.textContent = `📄 ${file.name}`;
+  fileSize.textContent = `📊 ${formatFileSize(file.size)}`;
+  fileInfo.style.display = 'block';
+}
+
+function formatFileSize(bytes) {
+  if (bytes === 0) return '0 Bytes';
+  const k = 1024;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+
+// Reset when clicked
+fileInput.addEventListener('click', function () {
+  if (this.files.length > 0) {
+    // Reset if file already selected
+    setTimeout(() => {
+      if (!this.files.length) {
+        resetFileInput();
+      }
+    }, 100);
+  }
+});
+
+function resetFileInput() {
+  fileInputCustom.classList.remove('file-selected');
+  const content = fileInputCustom.querySelector('.file-input-content');
+  content.innerHTML = `
+                <span class="file-icon">📷</span>
+                <div class="file-text">Chọn ảnh để tải lên</div>
+                <div class="file-hint">Kéo thả file vào đây hoặc click để chọn</div>
+                <div class="file-types">JPG, PNG, GIF (tối đa 10MB)</div>
+            `;
+  fileInfo.style.display = 'none';
+}
 
 
