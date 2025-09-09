@@ -1739,3 +1739,156 @@ html.dark #story {
     text-align: center;
   }
 }
+
+
+.form-row {
+  margin-bottom: 20px;
+}
+
+.form-row label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Hide default file input */
+.form-row input[type="file"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* Custom file input wrapper */
+.file-input-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+/* Custom file input styling */
+.file-input-custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 3px dashed #667eea;
+  border-radius: 16px;
+  background: rgba(102, 126, 234, 0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-height: 120px;
+}
+
+.file-input-custom:hover {
+  background: rgba(102, 126, 234, 0.1);
+  border-color: #764ba2;
+  transform: translateY(-2px);
+}
+
+.file-input-content {
+  text-align: center;
+  pointer-events: none;
+}
+
+.file-icon {
+  font-size: 40px;
+  color: #667eea;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.file-text {
+  color: #333;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.file-hint {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.file-types {
+  color: #888;
+  font-size: 12px;
+}
+
+/* Selected file state */
+.file-selected {
+  background: rgba(102, 126, 234, 0.1);
+  border-color: #667eea;
+  border-style: solid;
+}
+
+.file-selected .file-icon {
+  color: #28a745;
+}
+
+.file-selected .file-text {
+  color: #28a745;
+}
+
+/* Drag over state */
+.file-dragover {
+  background: rgba(102, 126, 234, 0.15);
+  border-color: #764ba2;
+  border-style: solid;
+}
+
+/* File info display */
+.file-info {
+  margin-top: 15px;
+  padding: 15px;
+  background: rgba(40, 167, 69, 0.1);
+  border-radius: 12px;
+  border-left: 4px solid #28a745;
+  display: none;
+}
+
+.file-name {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.file-size {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Demo styles */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2em;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  .file-input-custom {
+    min-height: 100px;
+    padding: 15px;
+  }
+
+  .file-icon {
+    font-size: 32px;
+  }
+
+  .file-text {
+    font-size: 16px;
+  }
+}
