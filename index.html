@@ -11,7 +11,7 @@
   <meta property="og:description"
     content="Nơi mọi người có thể gửi câu chuyện của mình: chuyện cá nhân, chuyện trường lớp, những điều khó nói." />
   <meta property="og:type" content="website" />
-   <link rel="icon" type="image/png" href="assets/logo.jpg">
+  <link rel="icon" type="image/png" href="assets/logo.jpg">
 
   <meta property="og:image"
     content="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=1600&auto=format&fit=crop" />
@@ -215,6 +215,24 @@
             <div class="field-hint">Không nên chứa thông tin nhạy cảm hoặc định danh người khác.</div>
           </div>
 
+          <div class="form-row">
+            <label for="image">Tải ảnh (tuỳ chọn)</label>
+            <div class="file-input-wrapper">
+              <input id="image" name="image" type="file" accept="image/*" />
+              <div class="file-input-custom" id="fileInputCustom">
+                <div class="file-input-content">
+                  <span class="file-icon">📷</span>
+                  <div class="file-text">Chọn ảnh để tải lên</div>
+                  <div class="file-hint">Kéo thả file vào đây hoặc click để chọn</div>
+                  <div class="file-types">JPG, PNG, GIF (tối đa 10MB)</div>
+                </div>
+              </div>
+            </div>
+            <div class="file-info" id="fileInfo">
+              <div class="file-name" id="fileName"></div>
+              <div class="file-size" id="fileSize"></div>
+            </div>
+          </div>
 
           <div class="form-actions">
             <button class="btn primary" type="submit" id="submitBtn">Gửi câu chuyện</button>
